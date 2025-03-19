@@ -9,11 +9,7 @@ const AddToWatchlistIcon = ({ movie }) => {
 
   const handleAddToWatchlist = (e) => {
     e.preventDefault();
-    if (addToWatchlist) {
-      addToWatchlist(movie);
-    } else {
-      console.warn("addToWatchlist not defined in context!");
-    }
+    addToWatchlist(movie);
   };
 
   return (
