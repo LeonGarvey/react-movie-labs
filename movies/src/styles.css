@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(13, 63, 169);
+    color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Example global styles for links */
+  a {
+    color: #61dafb;
+    text-decoration: none;
+  }
+  
+  /* Other global styles */
+  header, footer {
+    background-color: #222;
+  }

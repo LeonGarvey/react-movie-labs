@@ -24,8 +24,6 @@ const UpcomingMoviesPage = () => {
   // Extract the results array from the data
   const movies = data.results;
 
-  // If you want to store watchlist in localStorage or handle favorites similarly:
-  // localStorage.setItem("watchlist", JSON.stringify(...))
 
   return (
     <PageTemplate
