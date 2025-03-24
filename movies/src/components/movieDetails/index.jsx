@@ -1,3 +1,4 @@
+import '../../styles.css';
 import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
@@ -9,6 +10,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+
 
 const root = {
     display: "flex",
@@ -71,15 +73,19 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         ))}
       </Paper>
       <Fab
-        color="secondary"
         variant="extended"
-        onClick={() =>setDrawerOpen(true)}
+        onClick={() => setDrawerOpen(true)}
         sx={{
-          position: 'fixed',
-          bottom: '1em',
-          right: '1em'
+          position: "fixed",
+          bottom: "1em",
+          right: "1em",
+          backgroundColor: "#0067db", // Blue background
+          "&:hover": {
+            backgroundColor: "#0056b3", // Darker blue on hover
+          },
         }}
       >
+        
         <NavigationIcon />
         Reviews
       </Fab>

@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import Button from "@mui/material/Button";
@@ -143,6 +144,7 @@ const ReviewForm = ({ movie }) => {
               onChange={onChange}
               value={value}
               id="author"
+              color="primary"
               label="Author's name"
               name="author"
               autoFocus
@@ -218,7 +220,7 @@ const ReviewForm = ({ movie }) => {
           <Button
             type="reset"
             variant="contained"
-            color="secondary"
+            color="primary"
             sx={styles.submit}
             onClick={() => {
               reset({

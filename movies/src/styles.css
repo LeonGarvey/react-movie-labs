@@ -1,17 +1,65 @@
 body {
-    background-color: rgb(13, 63, 169);
+  
     color: white;
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5; /* Light background to contrast with the movie cards */
   }
   
-  /* Example global styles for links */
+ 
   a {
     color: #61dafb;
     text-decoration: none;
   }
   
-  /* Other global styles */
+
   header, footer {
     background-color: #222;
+  }
+
+  .navbar {
+    background-color: #0067db; 
+    color: #ffffff;
+    padding: 1rem;
+  }
+  
+ 
+  .navbar .logo {
+    color: #fedb00; /* Blockbuster yellow */
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  /* Movie Card Container */
+  .movie-card {
+    background-color: #0067db !important;
+    color: #ffffff !important;
+    border: 2px solid #fedb00 !important;
+    margin: 1rem !important;
+    padding: 1rem !important;
+    transition: transform 0.2s ease-in-out !important;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .btn {
+    background-color: #fedb00 !important;
+    color: #0067db !important;
+    margin-top: 0.5rem !important;
+  }
+  
+  .btn:hover {
+    background-color: #ffec66; /* Slightly lighter yellow on hover */
+  }
+
+  .review-page-container {
+    color: #000; 
+  }
+
+  .movie-page-container {
+    color: #000;
   }

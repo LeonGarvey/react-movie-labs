@@ -24,18 +24,16 @@ const MoviePage = (props) => {
 
 
   return (
-    <>
-      {movie ? (
-        <>
-          <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
-          </PageTemplate>
-        </>
-      ) : (
-        <p>Waiting for movie details</p>
-      )}
-    </>
-  );
+    <div className="movie-page-container">
+    {movie ? (
+      <PageTemplate movie={movie}>
+        <MovieDetails movie={movie} />
+      </PageTemplate>
+    ) : (
+      <p>Waiting for movie details</p>
+    )}
+  </div>
+);
 };
 
 export default MoviePage;

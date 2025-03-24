@@ -1,3 +1,4 @@
+import '../../styles.css';
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,6 +12,8 @@ import { useNavigate } from "react-router";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Box from '@mui/material/Box';
+
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -41,15 +44,27 @@ const SiteHeader = ({ history }) => {
 
   return (
     <>
-      <AppBar position="fixed" color="primary">
+     <AppBar position="fixed" color="primary">
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             Rentables
           </Typography>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
-          </Typography>
-            {isMobile ? (
+
+          
+          <Box
+            sx={{
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              textAlign: "center",
+            }}
+          >
+            <Typography variant="h6">
+              All you ever wanted to know about Movies!
+            </Typography>
+          </Box>
+
+          {isMobile ? (
               <>
                 <IconButton
                   aria-label="menu"

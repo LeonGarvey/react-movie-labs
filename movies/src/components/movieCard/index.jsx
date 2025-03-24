@@ -1,3 +1,4 @@
+import '../../styles.css';
 import { Link } from "react-router";
 import React, { useContext  } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
@@ -15,6 +16,7 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid2";
 import img from '../../images/film-poster-placeholder.png';
 import Avatar from '@mui/material/Avatar';
+
 
 
 export default function MovieCard({ movie, action }) { 
