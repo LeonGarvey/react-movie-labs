@@ -12,6 +12,8 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import MoviesContextProvider from "./contexts/moviesContext";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import WatchlistPage from "./pages/watchlistPage";
+import NowPlayingPage from "./pages/NowPlayingPage";
+
 import "./styles.css";
 
 
@@ -42,6 +44,7 @@ const App = () => {
             <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
             <Route path="/upcoming" element={<UpcomingMoviesPage />} /> 
             <Route path="/watchlist" element={<WatchlistPage />} />
+            <Route path="/now_playing" element={<NowPlayingPage />} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>

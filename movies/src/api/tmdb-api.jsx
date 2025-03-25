@@ -1,3 +1,7 @@
+
+const tmdbApiKey = import.meta.env.VITE_TMDB_KEY;
+const tmdbBaseUrl = "https://api.themoviedb.org/3";
+
 export const getMovies = () => {
   return fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -101,3 +105,23 @@ export const getMovie = (args) => {
     return response.json();
   };
   
+
+  export const getNowPlayingMovies = async () => {
+    return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}`)
+      .then((res) => res.json());
+  };
+  
+  export const getPopularMovies = async () => {
+    return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}`)
+      .then((res) => res.json());
+  };
+  
+  export const getTopRatedMovies = async () => {
+    return fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}`)
+      .then((res) => res.json());
+  };
+  
+  export const getRecommendedMovies = async (id) => {
+    return fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${import.meta.env.VITE_TMDB_KEY}`)
+      .then((res) => res.json());
+  };
