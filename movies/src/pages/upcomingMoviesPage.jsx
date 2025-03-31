@@ -1,39 +1,45 @@
-// src/pages/upcomingMoviesPage.jsx
-import React from "react";
+
+import React, { useState } from "react";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
 import AddToWatchlistIcon from "../components/cardIcons/addToWatchlist";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 const UpcomingMoviesPage = () => {
-  // Use React Query to fetch upcoming movies
+  const [page, setPage] = useState(1);
+ 
   const { data, error, isPending, isError } = useQuery({
-    queryKey: ["upcoming"],
-    queryFn: getUpcomingMovies,
+    queryKey: ["upcoming", page],
+    queryFn: () => getUpcomingMovies(page),
+    keepPreviousData: true,
   });
 
-  if (isPending) {
-    return <Spinner />;
-  }
+  if (isPending) return <Spinner />;
+  if (isError) return <h1>{error.message}</h1>;
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
-
-  // Extract the results array from the data
   const movies = data.results;
-
+  const totalPages = data.total_pages;
 
   return (
+    <>
     <PageTemplate
-      title="Upcoming Movies"
+      title={`Upcoming movies`}
       movies={movies}
-      action={(movie) => {
-        // Render the new icon instead of AddToFavoritesIcon
-        return <AddToWatchlistIcon movie={movie} />;
-      }}
+      action={(movie) => <AddToWatchlistIcon movie={movie} />}
+      
     />
+    <Stack spacing={2} alignItems="center" sx={{ my: 3 }}>
+        <Pagination
+          count={Math.min(totalPages, 500)}
+          page={page}
+          onChange={(e, value) => setPage(value)}
+          color="primary"
+        />
+      </Stack>
+    </>
   );
 };
 

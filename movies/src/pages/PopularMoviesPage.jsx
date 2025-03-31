@@ -28,7 +28,7 @@ const PopularMoviesPage = () => {
   return (
     <>
       <PageTemplate
-        title={`Popular Movies (Page ${page})`}
+        title={`Popular Movies`}
         movies={movies}
         action={(movie) => <AddToFavoritesIcon movie={movie} />}
         showFilter={false}
