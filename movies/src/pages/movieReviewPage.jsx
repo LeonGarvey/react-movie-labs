@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import PageTemplate from "../components/templateMoviePage";
 import { useQuery } from '@tanstack/react-query';
 import MovieReview from "../components/movieReview";
-import '../styles.css';
+
 
 const MovieReviewPage = (props) => {
   let location = useLocation();

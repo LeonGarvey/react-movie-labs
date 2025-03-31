@@ -6,7 +6,8 @@ import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import '../styles.css';
+import Box from "@mui/material/Box";
+
 
 const HomePage = (props) => {
 
@@ -31,7 +32,7 @@ const HomePage = (props) => {
   const addToFavorites = (movieId) => true 
 
   return (
-    <>
+   <>
     <PageTemplate
       title={`Discover Movies`}
       movies={movies}
@@ -45,7 +46,7 @@ const HomePage = (props) => {
       color="primary"
         />
       </Stack>
-    </>
+      </>
   );
 };
 

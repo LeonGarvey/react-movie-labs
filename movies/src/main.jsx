@@ -17,9 +17,11 @@ import PopularMoviesPage from "./pages/PopularMoviesPage";
 import TopRatedPage from "./pages/TopRatedPage";
 import RecommendationsPage from "./pages/RecommendationsPage";
 
-import "./styles.css";
 
 
+document.body.style.margin = "0"; // keeps thing below site header attached to sides
+document.body.style.padding = "0";
+document.body.style.backgroundColor = "#0d47a1"; //changes background color of all pages
 
 const queryClient = new QueryClient({
   defaultOptions: {

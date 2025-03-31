@@ -8,8 +8,9 @@ const WatchlistPage = () => {
   
     if (watchlist.length === 0) {
       return (
-        <div style={{ padding: "2rem", color: "black" }}>
-          <h2>Your Watchlist is Empty</h2>
+        <div style={{ padding: "2rem", color: "white", fontFamily: "Arial, Helvetica, sans-serif", }}>
+          <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem",  fontWeight: "500", }}>My Watchlist is empty </h1>
+          
         </div>
       );
     }

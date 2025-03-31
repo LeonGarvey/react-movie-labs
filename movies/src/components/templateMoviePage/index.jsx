@@ -6,7 +6,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from '../spinner'
-
+import Box from "@mui/material/Box";
 
 const TemplateMoviePage = ({ movie, children }) => {
   const { data, error, isPending, isError } = useQuery({
@@ -35,10 +35,15 @@ const TemplateMoviePage = ({ movie, children }) => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
+            
+            
           }}>
             <ImageList
                 sx={{
                     height: "100vh",
+                    width: "90%",
+                    margin: "auto",
+                    
                 }}
                 cols={1}
             >

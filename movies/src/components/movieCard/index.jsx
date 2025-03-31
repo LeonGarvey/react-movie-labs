@@ -1,4 +1,3 @@
-import '../../styles.css';
 import { Link } from "react-router";
 import React, { useContext  } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";

@@ -6,7 +6,7 @@ import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import "../styles.css";
+
 
 const NowPlayingPage = () => {
 

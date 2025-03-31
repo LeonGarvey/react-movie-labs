@@ -5,6 +5,7 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner'
+
 //import useMovie from "../hooks/useMovie";
 
 const MoviePage = (props) => {
@@ -24,7 +25,13 @@ const MoviePage = (props) => {
 
 
   return (
-    <div className="movie-page-container">
+    <div className="movie-page-container"
+    style={{
+      color: "white",
+      padding: "0", 
+      margin: "0",
+    }}
+  >
     {movie ? (
       <PageTemplate movie={movie}>
         <MovieDetails movie={movie} />
