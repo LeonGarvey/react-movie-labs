@@ -38,7 +38,16 @@ const PopularMoviesPage = () => {
           count={Math.min(totalPages, 500)} 
           page={page}
           onChange={(e, value) => setPage(value)}
-          color="primary"
+          sx={{
+            "& .MuiPaginationItem-root": {
+              color: "white",              
+              borderColor: "white",        
+            },
+            "& .Mui-selected": {
+              backgroundColor: "white",    // Selected item background
+              color: "#0d47a1",           
+            },
+          }}
         />
       </Stack>
     </>

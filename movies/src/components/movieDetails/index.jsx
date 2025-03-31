@@ -22,7 +22,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie }) => {  
   const [drawerOpen, setDrawerOpen] = useState(false);  
   return (
     <>
@@ -79,7 +79,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           position: "fixed",
           bottom: "1em",
           right: "1em",
-          backgroundColor: "#0067db", // Blue background
+         
           "&:hover": {
             backgroundColor: "#0056b3", // Darker blue on hover
           },

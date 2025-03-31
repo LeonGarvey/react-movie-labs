@@ -37,7 +37,7 @@ export default function MovieCard({ movie, action }) {
   return (
     <Card
     sx={{
-      backgroundColor: "rgb(61,101,186)",
+      backgroundColor: "#1565c0",
       borderRadius: "10px",
       boxShadow: 3,
       color: "white"
@@ -53,8 +53,15 @@ export default function MovieCard({ movie, action }) {
           ) : null
         }
         title={
-          <Typography variant="h5" component="p">
-            {movie.title}{" "}
+          <Typography
+            variant="h6"
+            component="p"
+            sx={{
+              height: "3.5rem",            // added to fix lines expanding movie card
+          
+            }}
+          >
+            {movie.title}
           </Typography>
         }
       />

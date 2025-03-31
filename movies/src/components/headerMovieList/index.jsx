@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router";
+import Box from "@mui/material/Box";
 
 
 const Header = (props ) => {
@@ -16,16 +17,18 @@ const Header = (props ) => {
     <Paper 
       component="div" 
       sx={{
-        backgroundColor: "rgb(61,101,186)",
+        backgroundColor: "#1565c0",
         color: "white",
         display: "flex",
-        justifyContent: "space-around",
+        alignItems: "center",
+        justifyContent: "space-between",
         flexWrap: "wrap",
-        marginBottom: 1.5,
+        padding: "1rem 2rem",
+        marginBottom: "1rem",
       }}
       >
            <IconButton aria-label="go back" onClick={() => navigate(-1)}>
-        <ArrowBackIcon color="primary" fontSize="large" />
+        <ArrowBackIcon sx={{ color: "white" }} fontSize="large" />
       </IconButton>
 
 
@@ -33,7 +36,7 @@ const Header = (props ) => {
         {title}
       </Typography>
       <IconButton aria-label="go forward" onClick={() => navigate(+1)}>
-        <ArrowForwardIcon color="primary" fontSize="large" />
+        <ArrowForwardIcon sx={{ color: "white" }} fontSize="large" />
       </IconButton>
 
     </Paper>

@@ -6,6 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router";
+import Box from "@mui/material/Box";
+
 
 const MovieHeader = (props) => {
   const movie = props.movie;
@@ -16,31 +18,56 @@ const MovieHeader = (props) => {
         component="div" 
         sx={{
           
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            padding: 1.5,
-            margin: 0,
-            backgroundColor: "rgb(61,101,186)",
-            color: "white",   
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          padding: "1rem 2rem",
+          backgroundColor: "#1565c0",
+          color: "white",
+          marginBottom: "1rem",  
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
-        <ArrowBackIcon color="primary" fontSize="large" />
+        <ArrowBackIcon sx={{ color: "white" }} fontSize="large" />
       </IconButton>
 
-      <Typography variant="h4" component="h3">
-        {movie.title}
-        <a href={movie.homepage}>
-          <HomeIcon color="primary" />
-        </a>
-        <br />
-        <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span>
-      </Typography>
+      <Box
+        sx={{
+          flexGrow: 1,
+          textAlign: "center",
+          overflow: "hidden",
+        }}
+      >
+
+
+<Typography variant="h5" component="h3" noWrap>
+          {movie.title}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          component="p"
+          sx={{ fontStyle: "italic", fontSize: "1rem" }}
+          noWrap
+        >
+          {movie.tagline && `"${movie.tagline}"`} 
+        </Typography>
+      </Box>
+
+     
+      <Box>
+        {movie.homepage && (
+          <a href={movie.homepage}>
+            <IconButton>
+              <HomeIcon sx={{ color: "white" }} />
+            </IconButton>
+          </a>
+        )}
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
-        <ArrowForwardIcon color="primary" fontSize="large" />
+        <ArrowForwardIcon sx={{ color: "white" }} fontSize="large" />
       </IconButton>
+      </Box>
     </Paper>
   );
 };
