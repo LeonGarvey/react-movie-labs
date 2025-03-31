@@ -11,6 +11,14 @@ import WriteReview from "../components/cardIcons/writeReview";
 const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);
 
+  if (movieIds.length === 0) {
+    return (
+      <div style={{ padding: "2rem", color: "black" }}>
+        <h2>Your Favorites List is Empty</h2>
+      </div>
+    );
+  }
+
   // Create an array of queries and run in parallel.
   const favoriteMovieQueries = useQueries({
     queries: movieIds.map((movieId) => {
