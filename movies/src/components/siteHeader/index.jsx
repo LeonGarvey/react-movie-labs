@@ -28,11 +28,14 @@ const SiteHeader = ({ history }) => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "Upcoming", path: "/upcoming" },
-    { label: "Watchlist", path: "/watchlist" },
     { label: "Now Playing", path: "/now_playing" },
+    { label: "Popular", path: "/popular" },
+    { label: "Top Rated", path: "/top_rated" },
+    { label: "Upcoming", path: "/upcoming" },
+    { label: "Favorites", path: "/movies/favorites" },
+    { label: "Watchlist", path: "/watchlist" },
   ];
+  
 
   const handleMenuSelect = (pageURL) => {
     setAnchorEl(null);
@@ -64,56 +67,42 @@ const SiteHeader = ({ history }) => {
               All you ever wanted to know about Movies!
             </Typography>
           </Box>
+{isMobile ? (
+  <>
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="menu"
+      onClick={(e) => setAnchorEl(e.currentTarget)}
+    >
+      <MenuIcon />
+    </IconButton>
+    <Menu
+      anchorEl={anchorEl}
+      open={open}
+      onClose={() => setAnchorEl(null)}
+    >
+      {menuOptions.map((opt) => (
+        <MenuItem key={opt.label} onClick={() => handleMenuSelect(opt.path)}>
+          {opt.label}
+        </MenuItem>
+      ))}
+    </Menu>
+  </>
+) : (
+  <>
+    {menuOptions.map((opt) => (
+      <Button
+        key={opt.label}
+        color="inherit"
+        onClick={() => handleMenuSelect(opt.path)}
+      >
+        {opt.label}
+      </Button>
+    ))}
+  </>
+)}
 
-          {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {menuOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <>
-                {menuOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
-                ))}
-              </>
-            )}
         </Toolbar>
       </AppBar>
       <Offset />

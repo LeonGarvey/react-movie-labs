@@ -111,8 +111,8 @@ export const getMovie = (args) => {
       .then((res) => res.json());
   };
   
-  export const getPopularMovies = async () => {
-    return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}`)
+  export const getPopularMovies = async (page = 1) => {
+    return fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&page=${page}`)
       .then((res) => res.json());
   };
   
