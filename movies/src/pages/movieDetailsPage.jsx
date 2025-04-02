@@ -15,6 +15,11 @@ const MoviePage = (props) => {
     queryFn: getMovie,
   })
 
+  if (movie) {
+    console.log("✅ Full movie object:", movie);
+    console.log("📝 Movie overview:", movie.overview);
+  }
+
   if (isPending) {
     return <Spinner />;
   }
