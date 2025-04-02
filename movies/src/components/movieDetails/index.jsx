@@ -10,7 +10,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
-
+import placeholderImage from "../../images/film-poster-placeholder.png";
 import { useQuery } from "@tanstack/react-query";
 import { getRecommendedMovies } from "../../api/tmdb-api";
 import { useParams, Link } from "react-router-dom";
@@ -110,7 +110,7 @@ const MovieDetails = ({ movie }) => {
         ) : (
           <Grid container spacing={2}>
             {recommendations?.results?.map((rec) => (
-              <Grid item xs={12} sm={6} md={3} key={rec.id}>
+              <Grid item xs={12} sm={6} md={2} key={rec.id}>
                 <Card
                   sx={{
                     backgroundColor: "#1a237e",
@@ -121,7 +121,12 @@ const MovieDetails = ({ movie }) => {
                   <CardMedia
                     component="img"
                     height="300"
-                    image={`https://image.tmdb.org/t/p/w500${rec.poster_path}`}
+                    sx={{ objectFit: "cover" }}
+                    image={
+                      rec.poster_path
+                      ?`https://image.tmdb.org/t/p/w500${rec.poster_path}`
+                      : placeholderImage
+                    }
                     alt={rec.title}
                   />
                   <CardContent>
