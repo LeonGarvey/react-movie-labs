@@ -12,7 +12,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import placeholderImage from "../../images/film-poster-placeholder.png";
 import { useQuery } from "@tanstack/react-query";
-import { getRecommendedMovies } from "../../api/tmdb-api";
+import { getRecommendedMovies, getMovieCredits } from "../../api/tmdb-api";
 import { useParams, Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -21,6 +21,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Spinner from "../spinner";
+
 
 const root = {
     display: "flex",
@@ -44,6 +45,15 @@ const MovieDetails = ({ movie }) => {
   } = useQuery({
     queryKey: ["recommendations", id],
     queryFn: () => getRecommendedMovies(id),
+  });
+
+  const {
+    data: credits,
+    isPending: loadingCredits,
+    isError: errorCredits,
+  } = useQuery({
+    queryKey: ["credits", id],
+    queryFn: () => getMovieCredits(id),
   });
 
   return (
@@ -94,6 +104,58 @@ const MovieDetails = ({ movie }) => {
           </li>
         ))}
       </Paper>
+
+
+
+ {/* CAST SECTION */}
+ <Box sx={{ mt: 6 }}>
+        <Typography variant="h5" sx={{ mb: 2 }}>
+          Cast
+        </Typography>
+
+        {loadingCredits ? (
+          <Spinner />
+        ) : errorCredits ? (
+          <Typography variant="body1" color="error">
+            Failed to load cast.
+          </Typography>
+        ) : (
+          <Grid container spacing={2}>
+            {credits?.cast?.slice(0, 8).map((actor) => (
+              <Grid item xs={12} sm={6} md={3} key={actor.id}>
+                <Card sx={{ backgroundColor: "#1a237e", color: "white"  }}>
+                  <CardMedia
+                    component="img"
+                    height="400"
+                    sx={{ objectFit: "cover" }}
+                    image={
+                      actor.profile_path
+                        ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                        : placeholderImage
+                    }
+                    alt={actor.name}
+                  />
+                  <CardContent>
+                    <Typography variant="subtitle1" noWrap>
+                      {actor.name}
+                    </Typography>
+                    <Typography variant="caption" sx={{ opacity: 0.8 }}>
+                      as {actor.character}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
+
+
+
+
+
+
+
 
      {/* Recommended Movies Section below*/}
      <Box sx={{ mt: 25 }}>

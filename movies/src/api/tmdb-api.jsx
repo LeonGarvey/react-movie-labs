@@ -149,3 +149,14 @@ export const getMovie = (args) => {
    
     return data;
   };
+
+
+  export const getMovieCredits = async (id) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch movie credits");
+    }
+    return await response.json();
+  };
