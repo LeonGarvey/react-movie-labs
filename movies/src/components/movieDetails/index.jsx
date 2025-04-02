@@ -11,6 +11,16 @@ import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 
+import { useQuery } from "@tanstack/react-query";
+import { getRecommendedMovies } from "../../api/tmdb-api";
+import { useParams, Link } from "react-router-dom";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Spinner from "../spinner";
 
 const root = {
     display: "flex",
@@ -24,6 +34,18 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => {  
   const [drawerOpen, setDrawerOpen] = useState(false);  
+
+  const { id } = useParams();
+
+  const {
+    data: recommendations,
+    isPending: loadingRecs,
+    isError: errorRecs,
+  } = useQuery({
+    queryKey: ["recommendations", id],
+    queryFn: () => getRecommendedMovies(id),
+  });
+
   return (
     <>
       <Typography variant="h5" component="h3">
@@ -72,6 +94,61 @@ const MovieDetails = ({ movie }) => {
           </li>
         ))}
       </Paper>
+
+     {/* Recommended Movies Section below*/}
+     <Box sx={{ mt: 25 }}>
+        <Typography variant="h5" sx={{ mb: 2 }}>
+          Recommended Movies
+        </Typography>
+
+        {loadingRecs ? (
+          <Spinner />
+        ) : errorRecs ? (
+          <Typography variant="body1" color="error">
+            Could not load recommendations.
+          </Typography>
+        ) : (
+          <Grid container spacing={2}>
+            {recommendations?.results?.map((rec) => (
+              <Grid item xs={12} sm={6} md={3} key={rec.id}>
+                <Card
+                  sx={{
+                    backgroundColor: "#1a237e",
+                    color: "white",
+                    height: "100%",
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={`https://image.tmdb.org/t/p/w500${rec.poster_path}`}
+                    alt={rec.title}
+                  />
+                  <CardContent>
+                    <Typography variant="subtitle1" noWrap>
+                      {rec.title}
+                    </Typography>
+                    <Link to={`/movies/${rec.id}`}>
+                      <Button
+                        size="small"
+                        variant="outlined"
+                        sx={{ mt: 1, color: "white", borderColor: "white" }}
+                      >
+                        More Info
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
+
+
+
+
+
       <Fab
         variant="extended"
         onClick={() => setDrawerOpen(true)}
