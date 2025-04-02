@@ -7,14 +7,19 @@ import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 
 const HomePage = (props) => {
 
   const [page, setPage] = useState(1);
+   
 
   const { data, error, isPending, isError  } = useQuery({
-    queryKey: ['discover, page'],
+    queryKey: ['discover', page],
     queryFn: () => getMovies(page),
     keepPreviousData: true,
   });
