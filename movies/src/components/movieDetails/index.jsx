@@ -136,7 +136,7 @@ const MovieDetails = ({ movie }) => {
                     alt={actor.name}
                   />
                   <CardContent>
-                    <Typography variant="subtitle1" noWrap>
+                    <Typography variant="subtitle1" noWrap  sx={{ fontWeight: "bold" }}>
                       {actor.name}
                     </Typography>
                     <Typography variant="caption" sx={{ opacity: 0.8 }}>
