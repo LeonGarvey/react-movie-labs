@@ -68,7 +68,7 @@ const MovieDetails = ({ movie }) => {
 
       <Paper 
         component="ul" 
-        sx={{...root}}
+        sx={{...root, backgroundColor: "#1565c0" }}
       >
         <li>
           <Chip label="Genres" sx={{...chip}} color="primary" />
@@ -79,7 +79,7 @@ const MovieDetails = ({ movie }) => {
           </li>
         ))}
       </Paper>
-      <Paper component="ul" sx={{...root}}>
+      <Paper component="ul" sx={{...root, backgroundColor: "#1565c0"}}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}
@@ -93,7 +93,7 @@ const MovieDetails = ({ movie }) => {
       </Paper>
       <Paper 
         component="ul" 
-        sx={{...root}}
+        sx={{...root, backgroundColor: "#1565c0"}}
       >
         <li>
           <Chip label="Production Countries" sx={{...chip}} color="primary" />
@@ -123,7 +123,7 @@ const MovieDetails = ({ movie }) => {
           <Grid container spacing={2}>
             {credits?.cast?.slice(0, 8).map((actor) => (
               <Grid item xs={12} sm={6} md={3} key={actor.id}>
-                <Card sx={{ backgroundColor: "#1a237e", color: "white"  }}>
+                <Card sx={{ backgroundColor: "#1565c0", color: "white"  }}>
                   <CardMedia
                     component="img"
                     height="400"
@@ -175,7 +175,7 @@ const MovieDetails = ({ movie }) => {
               <Grid item xs={12} sm={6} md={2} key={rec.id}>
                 <Card
                   sx={{
-                    backgroundColor: "#1a237e",
+                    backgroundColor: "#1565c0",
                     color: "white",
                     height: "100%",
                   }}
