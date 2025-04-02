@@ -71,22 +71,27 @@ const MovieDetails = ({ movie }) => {
         sx={{...root, backgroundColor: "#1565c0" }}
       >
         <li>
-          <Chip label="Genres" sx={{...chip}} color="primary" />
+          <Chip label="Genres" sx={{...chip, color: "white"}} color="primary" />
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} sx={{...chip}} />
+            <Chip label={g.name} sx={{...chip, color: "white"}} />
           </li>
         ))}
       </Paper>
       <Paper component="ul" sx={{...root, backgroundColor: "#1565c0"}}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip 
+        icon={<AccessTimeIcon sx={{ color: "white" }}  />}
+         label={`${movie.runtime} min.`} 
+         
+         />
+         
         <Chip
-          icon={<MonetizationIcon />}
+          icon={<MonetizationIcon sx={{ color: "white" }} />}
           label={`${movie.revenue.toLocaleString()}`}
         />
         <Chip
-          icon={<StarRate />}
+          icon={<StarRate sx={{ color: "white" }}  />}
           label={`${movie.vote_average} (${movie.vote_count})`}
         />
         <Chip label={`Released: ${movie.release_date}`} />
@@ -96,11 +101,11 @@ const MovieDetails = ({ movie }) => {
         sx={{...root, backgroundColor: "#1565c0"}}
       >
         <li>
-          <Chip label="Production Countries" sx={{...chip}} color="primary" />
+          <Chip label="Production Countries" sx={{...chip, color: "white"}} color="primary" />
         </li>
         {movie.production_countries.map((p) => (
           <li key={p.name}>
-            <Chip label={p.name} sx={{...chip}} />
+            <Chip label={p.name} sx={{...chip, color: "white"}} />
           </li>
         ))}
       </Paper>
